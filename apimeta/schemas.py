@@ -2,25 +2,32 @@ from typing import List
 
 from pydantic import BaseModel, Field
 from .tags import (
-    TwitterTag, OpenGraphTag, DefaultTagType, TitleTag, MetaTag
+    TwitterTag, OpenGraphTag, DefaultTag, TitleTag
 )
 
 
-class MetaResponse(BaseModel):
+class AppsScheme(BaseModel):
+    twitter: List[TwitterTag] = Field(default=[])
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class MetaResponseScheme(BaseModel):
     title: List[TitleTag] = Field(default=None)
     opengraph: List[OpenGraphTag] = Field(default=[])
-    twitter: List[TwitterTag] = Field(default=[])
-    tags: List[DefaultTagType] = Field(default=[])
+    apps: AppsScheme = Field(default={})
+    tags: List[DefaultTag] = Field(default=[])
 
     class Config:
         arbitrary_types_allowed = True
 
     @classmethod
-    def create(cls, tags: List[MetaTag]):
+    def create(cls, tags: List[DefaultTag]):
 
         tag_types = {
             TitleTag: [], TwitterTag: [],
-            OpenGraphTag: [], DefaultTagType: [],
+            OpenGraphTag: [], DefaultTag: [],
         }
 
         for tag in tags:
@@ -28,7 +35,7 @@ class MetaResponse(BaseModel):
 
         return cls(
             title=tag_types[TitleTag],
-            twitter=tag_types[TwitterTag],
             opengraph=tag_types[OpenGraphTag],
-            tags=tag_types[DefaultTagType]
+            tags=tag_types[DefaultTag],
+            apps=AppsScheme(twitter=tag_types[TwitterTag])
         )

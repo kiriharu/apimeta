@@ -10,6 +10,7 @@ fastapi = "^0.63.0"
 uvicorn = {extras = ["standart"], version = "^0.13.4"}
 bs4 = "^0.0.1"
 httpx = "^0.17.1"
+Jinja2 = "^2.11.3"
 
 [tool.poetry.dev-dependencies]
 

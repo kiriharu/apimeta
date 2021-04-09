@@ -3,7 +3,7 @@ from typing import List
 from bs4 import BeautifulSoup
 from httpx import AsyncClient, Response
 
-from apimeta.tags import DefaultTagType, MetaTag, tag_factory
+from apimeta.tags import DefaultTag, MetaTag, tag_factory
 
 
 class SiteScrapper:
@@ -20,7 +20,7 @@ class SiteScrapper:
         content = await self._request()
         return BeautifulSoup(content)
 
-    async def parse(self) -> List[DefaultTagType]:
+    async def parse(self) -> List[DefaultTag]:
         soup = await self._get_soup()
         head = soup.find("head")
         meta_list = head.find_all("meta")

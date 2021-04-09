@@ -29,8 +29,7 @@ class MetaTag:
         return isinstance(self.property, str) and property_ in self.property
 
 
-# TODO: abstracttagtype
-class DefaultTagType:
+class DefaultTag:
     """Default Tag type"""
 
     def __init__(self, tag: MetaTag):
@@ -45,21 +44,21 @@ class DefaultTagType:
         raise NotImplementedError
 
 
-class TitleTag(DefaultTagType):
+class TitleTag(DefaultTag):
 
     @classmethod
     def check(cls, tag: MetaTag) -> bool:
         return tag.name_eq("title")
 
 
-class TwitterTag(DefaultTagType):
+class TwitterTag(DefaultTag):
 
     @classmethod
     def check(cls, tag: MetaTag) -> bool:
         return tag.name_contain("twitter")
 
 
-class OpenGraphTag(DefaultTagType):
+class OpenGraphTag(DefaultTag):
 
     @classmethod
     def check(cls, tag: MetaTag) -> bool:
@@ -67,8 +66,8 @@ class OpenGraphTag(DefaultTagType):
 
 
 def tag_factory(meta_tag: MetaTag):
-    for cls in DefaultTagType.__subclasses__():
+    for cls in DefaultTag.__subclasses__():
         if cls.check(meta_tag):
             return cls(meta_tag)
     else:
-        return DefaultTagType(meta_tag)
+        return DefaultTag(meta_tag)
