@@ -11,6 +11,7 @@ uvicorn = {extras = ["standart"], version = "^0.13.4"}
 bs4 = "^0.0.1"
 httpx = "^0.17.1"
 Jinja2 = "^2.11.3"
+aiofiles = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 
