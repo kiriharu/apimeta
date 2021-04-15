@@ -3,10 +3,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from .schemas import MetaResponseScheme
 from .scraper import SiteScrapper
 
 app = FastAPI()
+# fix nginx issues
+app.add_middleware(ProxyHeadersMiddleware, trusted_hosts="*")
 app.mount("/static", StaticFiles(directory="apimeta/static"), name="static")
 templates = Jinja2Templates(directory="apimeta/templates")
 
