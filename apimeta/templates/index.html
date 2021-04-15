@@ -6,57 +6,58 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
 >
-    <link rel="stylesheet" href="{{ url_for('static', path='codemirror.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>API Meta</title>
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">API Meta</a>
-</nav>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">API Meta</a>
+    </nav>
 
 
-<div class="container">
+    <div class="container">
 
-    <div class="jumbotron mt-3">
-        <h1>API Meta</h1>
-        <p>This is simple API to return the meta tags of any site in JSON format with categories.
-            It can be used for SEO analysis or meta tag scraping</p>
-        <p>Leave the scraping, XPath, and regex to API!</p>
+        <div class="jumbotron mt-3">
+            <h1>API Meta</h1>
+            <p>This is simple API to return the meta tags of any site in JSON format with categories.
+                It can be used for SEO analysis or meta tag scraping</p>
+            <p>Leave the scraping, XPath, and regex to API!</p>
+        </div>
+
+        <div class="credits">
+            <h2>Credits</h2>
+        </div>
+
+        <div>
+            <ul>
+                <li><a href="https://bettermeta.io/?ref=apimeta.kiriha.ru">Inspired by Bettermeta (not works)</a></li>
+                <li><a href="https://github.com/kiriharu/apimeta">Github</a></li>
+                <li><a href="https://kiriha.ru">Creator</a></li>
+                <li><a href="https://t.me/kiriharu">Creator Telegram Channel</a></li>
+            </ul>
+        </div>
+
+        <div class="tryit">
+            <h2>Try it now!</h2>
+        </div>
+
+        <form>
+            <div>
+                <label for="site-url">Url</label>
+                <input class="form-control" id="site-url">
+            </div>
+            <button type="button" class="btn btn-primary">Send</button>
+        </form>
+
+        <div id="output_div" class="mt-3">
+
+
+        </div>
+
     </div>
-
-
-    <div class="credits">
-        <h2>Credits</h2>
-    </div>
-
-    <div>
-        <ul>
-            <li><a href="https://bettermeta.io/?ref=apimeta.kiriha.ru">Inspired by Bettermeta (not works)</a></li>
-            <li><a href="https://github.com/kiriharu/apimeta">Github</a></li>
-            <li><a href="https://kiriha.ru">Creator</a></li>
-            <li><a href="https://t.me/kiriharu">Creator Telegram Channel</a></li>
-        </ul>
-    </div>
-
-    <div class="tryit">
-        <h2>Try it now!</h2>
-    </div>
-
-<form>
-    <div>
-        <label for="site-url">Url</label>
-        <input class="form-control" id="site-url">
-    </div>
-    <button type="submit" class="btn btn-primary">Send</button>
-</form>
-
-<!-- TODO: usage for site-url form -->
-
-</div>
-
-<script src="{{ url_for('static', path='codemirror.js') }}"></script>
+    <script src="{{ url_for('static', path='script.js') }}"></script>
 </body>
 </html>
