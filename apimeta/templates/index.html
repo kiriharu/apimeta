@@ -6,6 +6,7 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
 >
+    <link rel="stylesheet" href="{{ url_for('static', path='codemirror.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>API Meta</title>
@@ -33,7 +34,7 @@
 
     <div>
         <ul>
-            <li><a href="https://bettermeta.io/?ref=apilist.fun">Inspired by Bettermeta (not works)</a></li>
+            <li><a href="https://bettermeta.io/?ref=apimeta.kiriha.ru">Inspired by Bettermeta (not works)</a></li>
             <li><a href="https://github.com/kiriharu/apimeta">Github</a></li>
             <li><a href="https://kiriha.ru">Creator</a></li>
             <li><a href="https://t.me/kiriharu">Creator Telegram Channel</a></li>
@@ -52,8 +53,10 @@
     <button type="submit" class="btn btn-primary">Send</button>
 </form>
 
-<!-- TODO: Codemirror textarea -->
+<!-- TODO: usage for site-url form -->
 
 </div>
+
+<script src="{{ url_for('static', path='codemirror.js') }}"></script>
 </body>
 </html>
