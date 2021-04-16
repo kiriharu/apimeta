@@ -1,69 +1,67 @@
 # API Meta
 
-API Meta - is API for getting site meta without webscraping. It can be used for SEO analysis or meta tag scraping.
+The API Meta service provides an API to get web-site meta by scraping it on your behalf. It could be used for SEO 
+analysis or meta tag scraping.
 
-Built with FastAPI and BS4
+Built with FastAPI and BeautifulSoup4.
 
-## How it works?
+## How does it work?
 
-This api have just 1 route - `/info`. In args you should pass `url` argument and the magic begins:
+This API only has a single endpoint — `/info`. You have to access it with GET, providing `url` argument, and the magic 
+would happen: 
 
 ```json
-
 {
-   "title":[
-      {
-         "name":"title",
-         "content":"Medium – Where good ideas find you.",
-         "property":null,
-         "other":{
-            "data-rh":"true"
-         }
-      }
-   ],
-   "opengraph":[
-      {
-         "name":null,
-         "content":"Medium is an open platform where readers find dynamic thinking, and where expert and undiscovered voices can share their writing on any topic.",
-         "property":"og:description",
-         "other":{
-            "data-rh":"true"
-         }
-      }...
-   ],
-   "apps":{
-      "twitter":[
-         {
-            "name":"twitter:title",
-            "content":"Medium – Where good ideas find you.",
-            "property":null,
-            "other":{
-               "data-rh":"true"
+    "title": [
+        {
+            "name": "title",
+            "content": "Medium – Where good ideas find you.",
+            "property": null,
+            "other": {
+                "data-rh": "true"
             }
-         }...
-      ]
-   },
-   "tags":[
-      {
-         "name":null,
-         "content":null,
-         "property":null,
-         "other":{
-            "data-rh":"true",
-            "charset":"utf-8"
-         }
-      }...
-   ]
+        }
+    ],
+    "opengraph": [
+        {
+            "name": null,
+            "content": "Medium is an open platform where readers find dynamic thinking, and where expert and undiscovered voices can share their writing on any topic.",
+            "property": "og:description",
+            "other": {
+                "data-rh": "true"
+            }
+        }, ...
+    ],
+    "apps": {
+        "twitter": [
+            {
+                "name": "twitter:title",
+                "content": "Medium – Where good ideas find you.",
+                "property": null,
+                "other": {
+                    "data-rh": "true"
+                }
+            }, ...
+        ]
+    },
+    "tags": [
+        {
+            "name": null,
+            "content": null,
+            "property": null,
+            "other": {
+                "data-rh": "true",
+                "charset": "utf-8"
+            }
+        }, ...
+    ]
 }
 ```
 
-Now API Meta return can parse this meta tags to categories:
-* Opengraph
-* Twitter
-* Title
+Currently API Meta can return information on page title, [Open Graph](https://ogp.me/) tags, and [Twitter card](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup) markup.
 
-Other tags, which not belong to any category you can see in `tags`
+The rest of the tags that API Meta cannot categorize at the moment go into `tags` collection.
 
-# PR
+## PR
 
-I will be very grateful if you send any PR, that will categorize tags. Check `tags.py` for more information.
+I'd be very grateful for any PRs with additional tag categories support. Please get started [here](https://github.com/kiriharu/apimeta/blob/main/apimeta/tags.py). 
