@@ -1,7 +1,7 @@
 from bs4.element import Tag
 from typing import Optional
 
-from apimeta.utils import without_keys
+from apimeta.utils import without_provided_keys
 
 
 class MetaTag:
@@ -10,7 +10,7 @@ class MetaTag:
         self.name: Optional[str] = tag.get("name", None)
         self.content: Optional[str] = tag.get("content", None)
         self.property: Optional[str] = tag.get("property", None)
-        self.other: Optional[dict] = without_keys(
+        self.other: Optional[dict] = without_provided_keys(
             tag.attrs, {"name", "content", "property"}
         )
 

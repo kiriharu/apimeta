@@ -71,6 +71,17 @@ async function display() {
     jsonDisplay.outputPretty(data);
 }
 
-document.querySelector(".btn-primary").addEventListener('click', function (el){
+const btn = document.querySelector(".btn-primary")
+
+btn.addEventListener('click', function (el){
     display();
+});
+
+// Handle enter press
+let input = document.querySelector('#site-url');
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   btn.click();
+  }
 });
