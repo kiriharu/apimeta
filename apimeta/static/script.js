@@ -10,6 +10,12 @@ jsonDisplay = {
         var pretty  = JSON.stringify(JSON.parse(jsonstring),null,2);
         // syntaxhighlight the pretty print version
         shpretty = jsonDisplay.syntaxHighlight(pretty);
+
+        // remove old element, if it exists
+        if (document.querySelector("pre")) {
+            document.querySelector("pre").remove()
+        }
+
         //output to a div
         // This could be a one liner with jQuery
         // - but not making assumptions about jQuery or other library being available.

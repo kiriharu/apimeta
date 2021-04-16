@@ -43,18 +43,22 @@
         <div class="tryit">
             <h2>Try it now!</h2>
         </div>
-
-        <form>
-            <div>
-                <label for="site-url">Url</label>
-                <input class="form-control" id="site-url">
+        <div class="container">
+            <div class="row g-3 align-items-center">
+                <div class="col">
+                    <div>
+                        <label for="site-url">Url</label>
+                        <input value="https://habr.com" class="form-control" id="site-url" aria-describedby="urlHelpBlock">
+                        <div id="urlHelpBlock" class="form-text"> Url with scheme, like https://google.com </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary">Send</button>
+                </div>
             </div>
-            <button type="button" class="btn btn-primary">Send</button>
-        </form>
+        </div>
 
         <div id="output_div" class="mt-3">
-
-
         </div>
 
     </div>

@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import HttpUrl
 
 from uvicorn.middleware.proxy_headers import ProxyHeadersMiddleware
 from .schemas import MetaResponseScheme
@@ -20,7 +21,7 @@ async def index(request: Request):
 
 
 @app.get("/info")
-async def info(url: str) -> MetaResponseScheme:
+async def info(url: HttpUrl) -> MetaResponseScheme:
     scrapper = SiteScrapper(url)
     tags = await scrapper.parse()
     return MetaResponseScheme.create(tags)
