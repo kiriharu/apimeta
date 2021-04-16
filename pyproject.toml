@@ -12,6 +12,7 @@ bs4 = "^0.0.1"
 httpx = "^0.17.1"
 Jinja2 = "^2.11.3"
 aiofiles = "^0.6.0"
+sentry-sdk = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 
